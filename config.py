@@ -10,7 +10,7 @@ class Config:
     SQLALCHEMY_DATABASE_URI=os.environ.get("DATABASE_URL") or \
         f"sqlite:///{os.path.join(basedir, 'app.db')}"
     
-    UPLOAD_FOLDER = os.environ.get("UPLOAD_FOLDER") or os.path.join(basedir, 'temp_upload')
+    UPLOAD_FOLDER = os.environ.get("UPLOAD_FOLDER") or os.path.join(basedir, '/app/uploads')
 
     MAX_CONTENT_LENGTH = os.environ.get("MAX_CONTENT_LENGTH") or 3 * 1000 * 1000
     MAX_CONTENT_LENGTH = int(MAX_CONTENT_LENGTH)
