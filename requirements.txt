@@ -5,3 +5,4 @@ Flask-Login>=0.6.3
 Flask-Cors>=4.0.1
 Flask-WTF>=1.2.1
 python-dotenv>=1.0.1
+filetype>=1.2.0
