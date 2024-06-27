@@ -2,4 +2,14 @@
 
 {% block content %}
 <h1>Index</h1>
+<hr>
+<table>
+    {% for file in files %}
+    <tr>
+        <td><a href={{ url_for("uploads", filename=file) }}>{{ file }}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+
 {% endblock %}

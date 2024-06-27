@@ -13,6 +13,11 @@ class Config:
     try:
         UPLOAD_FOLDER = os.path.join(basedir, os.environ.get("UPLOAD_FOLDER")) 
     except (TypeError, ValueError):
-        UPLOAD_FOLDER = os.path.join(basedir, 'app/uploads')
+        UPLOAD_FOLDER = os.path.join(basedir, 'app/uploadsss')
+
+    try:
+        os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+    except Exception:
+        raise
 
     MAX_CONTENT_LENGTH = int(os.environ.get("MAX_CONTENT_LENGTH") or 3 * 1000 * 1000)
