@@ -129,6 +129,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.flaskenv
 
 # Spyder project settings
 .spyderproject
@@ -164,8 +165,11 @@ uploads/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-#flask env 
-.flaskenv
+# vscode
+.vscode/
 
-#local db
-.db
+#don't store the db
+*.db
+
+#don't track audio files
+*.mp3

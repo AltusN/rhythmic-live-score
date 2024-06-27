@@ -1,3 +1,5 @@
+from datetime import datetime, timezone
+
 import sqlalchemy as sa
 import sqlalchemy.orm as so
 
@@ -23,8 +25,9 @@ class GymnastMusic(db.Model):
     gymnast_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(Gymnast.id), index=True)
     apparatus: so.Mapped[str] = so.mapped_column(sa.String(16))
     music_location: so.Mapped[str] = so.mapped_column(sa.String(128))
-
+    date_uploaded: so.Mapped[datetime] = so.mapped_column(default = lambda: datetime.now(timezone.utc))
+    
     gymnast: so.Mapped[Gymnast] = so.relationship(back_populates="music")
 
     def __repr__(self) -> str:
-        return f"<Music file: {self.music_location}"
+        return f"<Music Details: {self.gymnast} - [{self.apparatus}] -> {self.music_location}>"

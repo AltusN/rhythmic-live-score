@@ -3,7 +3,7 @@ import os
 from flask import render_template, redirect, url_for, flash, abort, request
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import FileStorage
-from mutagen import File
+from filetype import guess_mime
 
 from app import app
 from app.forms import UploadGymMusic
@@ -30,8 +30,12 @@ def upload():
 
 def is_audio_file(f_stream:FileStorage) -> bool:
     # if this cannont be loaded, then it's not a audio file
-    audio_file = File(f_stream)
-    return audio_file is not None
+    allowed  = False
+    kind = guess_mime(f_stream)
+    if kind is not None:
+        allowed = "audio" in kind
+    
+    return allowed
     
 def is_allowed_file(filename:str) -> bool:
     return "." in filename and \
